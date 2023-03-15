@@ -8,7 +8,7 @@ if number_or_word.isdigit():
     else:
         print("це не парне число")
 if number_or_word.isalpha():
-    f = print("це слово")
+    print("це слово")
     print(f"довжина слова {len(number_or_word)} символів")
 
 
