@@ -10,8 +10,3 @@ if number_or_word.isdigit():
 if number_or_word.isalpha():
     print("це слово")
     print(f"довжина слова {len(number_or_word)} символів")
-
-
-
-
-
