@@ -1,6 +1,6 @@
-def add_any_numbers_of_arguments(*nums):
+def add_any_numbers_of_arguments(*args):
   a = 0
-  for i in nums:
+  for i in args:
     a += i
 
   print(a)
