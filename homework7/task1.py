@@ -39,7 +39,7 @@ def delete_contact(name):
             phone_book.remove(i)
 
     try:
-        print(i["name2"])
+        del phone_book[name]
     except(KeyError):
         print("contact with this name not found")
 
