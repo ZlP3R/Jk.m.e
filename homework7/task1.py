@@ -26,12 +26,22 @@ def show_contact(name):
             c = name
             print(f"Name: {i.get('name')}\nPhone number: {i.get('phone number')}")
 
+    try:
+        print(i["name2"])
+    except(KeyError):
+         print("contact with this name not found")
+
 def delete_contact(name):
     c = ''
     for i in phone_book:
         if name == i.get("name"):
             c = name
             phone_book.remove(i)
+
+    try:
+        del phone_book[name]
+    except(KeyError):
+        print("contact with this name not found")
 
 def all_names_in_book():
     for i in phone_book:
@@ -53,6 +63,7 @@ while True:
         print(show_contact(d))
         if d == "close":
             exit()
+
 
     if comands == "stats":
         print(comand_stats())
