@@ -40,6 +40,6 @@ def weather():
     t4.start()
     t4.join()
     t5.start()
-    t5.join(
+    t5.join()
     print(f"it's hotter right now: {max(lst)}")
 weather()
