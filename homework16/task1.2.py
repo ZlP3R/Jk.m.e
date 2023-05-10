@@ -51,26 +51,22 @@ def weather():
               }
     )
     KM_temperature = KM_url.json()["hourly"]["temperature_2m"]
-    t1 = (threading.Thread(target=average_weather, args=(K_temperature,)))
-    t2 = (threading.Thread(target=average_weather, args=(RT_temperature,)))
-    t3 = (threading.Thread(target=average_weather, args=(P_temperature,)))
-    t4 = (threading.Thread(target=average_weather, args=(D_temperature,)))
-    t5 = (threading.Thread(target=average_weather, args=(KM_temperature,)))
+    multiprocessing()
+    print(f"it's hotter right now: {max(lst)}")
+@average_weather
+def multiprocessing():
+
+    (multiprocessing.Process(target=average_weather, args=(K_temperature,)))
+    (multiprocessing.Process(target=average_weather, args=(RT_temperature,)))
+    (multiprocessing.Process(target=average_weather, args=(P_temperature,)))
+    (multiprocessing.Process(target=average_weather, args=(D_temperature,)))
+    (multiprocessing.Process(target=average_weather, args=(KM_temperature,)))
     print(time.time())
     lst.append(statistics.mean(K_temperature))
     lst.append(statistics.mean(RT_temperature))
     lst.append(statistics.mean(P_temperature))
     lst.append(statistics.mean(D_temperature))
     lst.append(statistics.mean(KM_temperature))
-    t1.start()
-    t1.join()
-    t2.start()
-    t2.join()
-    t3.start()
-    t3.join()
-    t4.start()
-    t4.join()
-    t5.start()
-    t5.join()
-    print(f"it's hotter right now: {max(lst)}")
+
+
 weather()
