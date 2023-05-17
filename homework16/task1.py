@@ -62,7 +62,7 @@ def weather():
     lst.append(statistics.mean(P_temperature))
     lst.append(statistics.mean(D_temperature))
     lst.append(statistics.mean(KM_temperature))
-    t1.start()
+    t1.start(
     t1.join()
     t2.start()
     t2.join()
