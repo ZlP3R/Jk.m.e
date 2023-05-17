@@ -51,22 +51,30 @@ def weather():
               }
     )
     KM_temperature = KM_url.json()["hourly"]["temperature_2m"]
-    multiprocessing()
-    print(f"it's hotter right now: {max(lst)}")
-@average_weather
-def multiprocessing():
-
-    (multiprocessing.Process(target=average_weather, args=(K_temperature,)))
-    (multiprocessing.Process(target=average_weather, args=(RT_temperature,)))
-    (multiprocessing.Process(target=average_weather, args=(P_temperature,)))
-    (multiprocessing.Process(target=average_weather, args=(D_temperature,)))
-    (multiprocessing.Process(target=average_weather, args=(KM_temperature,)))
-    print(time.time())
     lst.append(statistics.mean(K_temperature))
     lst.append(statistics.mean(RT_temperature))
     lst.append(statistics.mean(P_temperature))
     lst.append(statistics.mean(D_temperature))
     lst.append(statistics.mean(KM_temperature))
+    print(f"it's hotter right now: {max(lst)}")
+
+    K = (multiprocessing.Process(target=average_weather, args=(KM_temperature,)))
+    K.start()
+    K.join()
+    RT = (multiprocessing.Process(target=average_weather, args=(RT_temperature,)))
+    RT.start()
+    RT.join()
+    P = (multiprocessing.Process(target=average_weather, args=(P_temperature,)))
+    P.start()
+    P.join()
+    D = (multiprocessing.Process(target=average_weather, args=(D_temperature,)))
+    D.start()
+    D.join()
+    KM = (multiprocessing.Process(target=average_weather, args=(KM_temperature,)))
+    KM.start()
+    KM.join()
+    print(time.time())
+
 
 
 weather()
